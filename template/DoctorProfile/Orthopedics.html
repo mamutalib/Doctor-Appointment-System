@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Orthopedics Doctor's Profile{% endblock title %}
+
+{% block body %}
+
+<h1 class="m-4">Department wise Doctor list</h1>
+
+<div class="container mt-1">
+    <h2>Orthopedics List</h2>
+    <div class="row">
+        {% for doctor in doctors %}
+       
+        <div class="col-sm-3">
+            <div class="card mb-3" style="width: 20rem;">
+                <img src="../static/img/emdoc1.svg" class="card-img-top" alt="Emergency doctor">
+                <div class="card-body">
+                    <h5 class="card-title">Name: {{doctor.doctor_name}}</h5>
+                    <h6>Department: {{doctor.department}}</h6>
+                    <h6>Location: {{doctor.location}}</h6>
+                    <a href="#" class="btn btn-outline-primary">See more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+ 
+    </div>
+</div>
+{% endblock body %}

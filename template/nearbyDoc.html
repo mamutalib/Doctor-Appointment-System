@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}NearBy Doctor{% endblock title %}
+
+{% block body %}
+
+<div class="continer">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <form action="/NearByDoc" method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" id="NearBy" name="NearBy" class="form-control"
+                                placeholder="enter your current location" aria-label="NearBy"
+                                aria-describedby="basic-addon1" required>
+
+                        </div>
+                        <div id="emailHelp" class="form-text"><mark>Note:</mark> Please try to write valid area name.
+                            Thank You.</div>
+                        <button type="submit" class="btn btn-outline-primary mt-3">Find NearBy Doctor</button>
+                    </form>
+                </div>
+                <div class="col-md-8">
+                    <div class="alert alert-primary text-center" role="alert">
+                        <h5>Welcome to Find NearBy Doctor.</h5>
+                    </div>
+
+                    {% if nrb %}
+                    <div class="alert alert-dark" role="alert">
+                        <h6>You are searching nearby doctors from <mark>{{near}}</mark></h6>
+                    </div>
+                    
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for n in nrb %}
+                            {% if n.location == near %}
+                            <tr>
+                                <td>{{n.doctor_name}}</td>
+                                <td>{{n.department}}</td>
+                                <td><a href="#" class="btn btn-outline-primary btn-sm">see more</a></td>
+                            </tr>                       
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <h1>no records</h1>
+
+                    {% endif %}
+                    {% comment %} <h5>the doctor name is : {{name}}</h5>
+                    <h5>the department is : {{dep}}</h5> {% endcomment %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,193 @@
+<style>
+    .docname {
+        background-color: #504fec;
+        padding: 10px;
+
+    }
+</style>
+
+{% extends 'base.html' %}
+
+{% block title %}patient_Profile{% endblock title %}
+
+{% block body %}
+
+<!-- alert message -->
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} warning alert-dismissible fade show" role="alert">
+    <strong>{{ message }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+
+{% if user.is_authenticated %}
+<!-- <h1>my name is {{don}}</h1> -->
+
+
+
+<div class="container">
+    <div class="row">
+       
+        
+            <div class="col-sm-4">
+                {% comment %} {% for p in pat %} {% endcomment %}
+                            {% comment %} {% if p.pat_name == name %} {% endcomment %}
+                            <div class="card">
+                                <div class="card-body">
+
+                                    
+                                    <img src="/media/upload/{{pat_image}}" class="card-img-top" style="width: 20rem;"
+                                        alt="doctor profile">
+                                        {% comment %}  {% endcomment %}
+
+                                    <div class="docname">
+                                        <h3 style="color: #f0e7e7;">{{pat_name}}</h3>
+                                        <h4 style="color: #f0caca;">{{pat_occu}} </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            {% comment %} {% endif %}  {% endcomment %}
+                        
+                {% comment %} {% endfor %}  {% endcomment %}
+            </div> 
+        
+        
+
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <div >
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                          data-bs-dismiss="modal">update</button>
+                        <div class="text-center sm">
+                        <h5 class="card-title text-center" style="color: 504fec;">PROFILE</h5>
+                    </div>
+                    <h3 style="color: #181717;">Name</h3>
+                    
+                    <hr>
+                    <mark>
+                        <p style="color: rgb(44, 71, 88);font-weight: 600;">age: {{pat_age}}</p>
+                        <p style="color: rgb(44, 71, 88);font-weight: 600;">gender: {{pat_location}}</p>
+                        <p style="color: rgb(44, 71, 88);font-weight: 600;">Languages Spoken: {{pat_lag_spoken}}</p>
+                        <p style="color: rgb(44, 71, 88);font-weight: 600;">Occupation: {{pat_occu}}</p>
+                    </mark>
+
+                    
+
+                </div>
+            </div>
+        </div>
+
+    
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8">
+           
+            <div class="card mt-3">
+                hlo
+                <div class="card-body">
+                    
+                    
+                    
+                    
+                    <div class="card">
+                        <div class="caed-body">
+                            <h5 class="card-title text-center " style="color: 504fec;">Daily update about health</h5>
+                            <div class="row text-center">
+                                <div class="col-sm-4">
+                                    <h5>Day</h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5><span class="badge bg-secondary">Blood Pressure</span></h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5><span class="badge bg-secondary">Suger level</span></h5>
+                                </div>
+
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-sm-4">
+                                    <h5>toDay</h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5><span class="badge bg-secondary">{{blood}}/{{bllod_2}}</span></h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5><span class="badge bg-secondary">{{suger_lvl}}</span></h5>
+                                </div>
+                            </div>
+                           
+                           
+                            
+                            
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="caed-body">
+                            <h5 class="card-title text-center " style="color: 504fec;">Today's health Status</h5>
+                            <div class="row text-center">
+                                <div class="col-sm-6">
+                                    
+                                        <h5>{{condition}}                                                               </h5>
+                                    
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5><span class="badge bg-secondary">HIgh BP!!!!</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Update your Today's health data</button>
+            </div>
+        </div>
+
+        
+
+
+        <div class="col-sm-4 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center " style="color: 504fec;">BIOGRAPHY</h5>
+                    <p style="color: rgb(44, 71, 88);font-weight: 600;">Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Blanditiis accusamus laborum reiciendis eos laboriosam corporis vel. Officia
+                        impedit eligendi, harum voluptates fuga dignissimos veritatis odio, ex, temporibus doloremque
+                        voluptatem at.</p>
+                    <h5 class="card-title text-center " style="color: 504fec;">contact</h5>
+                    <address>
+                        <p>Lorem ipsum dolor sit.
+                            Golapgonj,Sylhet,Bangladesh
+                        </p>
+                        <a href="http://">arifad@gmail.com</a>
+                        <p>01785051980</p>
+
+                    </address>
+
+
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+
+<a href="/signout" class="btn btn-outline-primary " tabindex="-1" role="button" aria-disabled="true">Sign Out</a>
+
+{% else %}
+<h4>sorry! try agin</h4>
+{% endif %}
+
+{% endblock body %}

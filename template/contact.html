@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+
+<!-- alert message -->
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} warning alert-dismissible fade show" role="alert">
+    <strong>{{ message }}</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+
+<h1>hello this is a contact page</h1>
+{% if user.is_authenticated %}
+<h1>my name is {{fname}}</h1>
+<h4>Your are successfullay logged in</h4>
+<a href="/signout" class="btn btn-outline-primary " tabindex="-1" role="button" aria-disabled="true">Sign Out</a>
+
+{% else %}
+<h4>sorry! try agin</h4>
+{% endif %}
+
+{% endblock body %}

@@ -1,0 +1,349 @@
+<style>
+  .docname {
+    background-color: #504fec;
+    padding: 10px;
+  }
+</style>
+
+{% extends 'base.html' %} {% block title %}Doctor_Profile{% endblock %}
+{% block body %}
+
+<!-- alert message -->
+{% if messages %} {% for message in messages %}
+<div
+  class="alert alert-{{ message.tags }} warning alert-dismissible fade show"
+  role="alert"
+>
+  <strong>{{ message }}</strong>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %} {% endif %} {% if user.is_authenticated %}
+<!-- <h1>my name is {{don}}</h1> -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <img
+            src="/media/upload/{{image}}"
+            class="card-img-top"
+            style="width: 20rem"
+            alt="doctor profile"
+          />
+          <div class="docname">
+            <h3 style="color: #f0e7e7">Dr.{{fname}}</h3>
+            <h4 style="color: #f0caca">{{department}} surgon</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <div>
+            <button
+              class="btn btn-primary"
+              data-bs-target="#exampleModalToggle2"
+              data-bs-toggle="modal"
+              data-bs-dismiss="modal"
+            >
+              update
+            </button>
+            <div class="text-center sm">
+              <h5 class="card-title text-center" style="color: 504fec">
+                PROFILE
+              </h5>
+            </div>
+
+            <h3 style="color: #181717">Dr.{{docname}}</h3>
+            <h4 style="color: #424040">{{department}} surgon</h4>
+            <hr />
+            <mark>
+              <p style="color: rgb(44, 71, 88); font-weight: 600">{{brife}}</p>
+              <p style="color: rgb(44, 71, 88); font-weight: 600">
+                Clinic: {{clinicloc}}
+              </p>
+              <p style="color: rgb(44, 71, 88); font-weight: 600">
+                Location: {{location}}
+              </p>
+            </mark>
+
+            <h5 class="card-title text-center" style="color: 504fec">
+              SPECIALITY
+            </h5>
+            <div class="spa1 d-flex">
+              <p style="font-size: 25px">
+                <span class="badge text-bg-primary">{{department}}</span>
+              </p>
+              <p style="font-size: 25px; margin-left: 10px">
+                <span class="badge text-bg-primary">Endosocopic</span>
+              </p>
+            </div>
+            <div class="spa2 d-flex">
+              <p style="font-size: 25px">
+                <span class="badge text-bg-primary">laparoscopy</span>
+              </p>
+              <p style="font-size: 25px; margin-left: 10px">
+                <span class="badge text-bg-primary">Thoracoscopy</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title" style="color: 504fec">
+              EXPERIENCE <span class="badge bg-secondary">22 Years</span>
+            </h5>
+            <h5 class="card-title" style="color: 504fec">
+              LANGUAGE <span class="badge bg-secondary">{{lag_spoken}}</span>
+            </h5>
+            <h5 class="card-title" style="color: 504fec">
+              TYPES OF <span class="badge bg-secondary">{{working_H}}</span>
+            </h5>
+
+            <div class="card">
+              <div class="caed-body">
+                <h5 class="card-title text-center" style="color: 504fec">
+                  Working Hours
+                </h5>
+                <div class="row text-center">
+                  <div class="col-sm-4">
+                    <h5>Day</h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">Morning Hours</span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">Evening Hours</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="row text-center">
+                  <div class="col-sm-4">
+                    <h5>SunDay</h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{sunday_mor}}</span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{sunday_ev}}</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="row text-center">
+                  <div class="col-sm-4">
+                    <h5>MonDay</h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{monday_mor}}</span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{monday_ev}}</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="row text-center">
+                  <div class="col-sm-4">
+                    <h5>TuesDay</h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{tuesday_mor}}</span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{tuesday_ev}}</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="row text-center">
+                  <div class="col-sm-4">
+                    <h5>WednesDay</h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{wedday_mor}}</span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{wedday_ev}}</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="row text-center">
+                  <div class="col-sm-4">
+                    <h5>ThursDay</h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{thursday_mor}}</span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{thursday_ev}}</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="row text-center">
+                  <div class="col-sm-4">
+                    <h5>FriDay</h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{frday_mor}}</span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{frday_ev}}</span>
+                    </h5>
+                  </div>
+                </div>
+                <div class="row text-center">
+                  <div class="col-sm-4">
+                    <h5>SaturDay</h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{satday_mor}}</span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-4">
+                    <h5>
+                      <span class="badge bg-secondary">{{satday_ev}}</span>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="caed-body">
+                <h5 class="card-title text-center" style="color: 504fec">
+                  Today's Status
+                </h5>
+                <div class="row text-center">
+                  <div class="col-sm-6">
+                    <h5>On Working</h5>
+                  </div>
+                  <div class="col-sm-6">
+                    <h5>
+                      <span class="badge bg-secondary">10% patient booked</span>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Patient List Section-->
+            <!-- some_template.html -->
+            {% comment %} {% if patients %}
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title text-center" style="color: 504fec">
+                  Patient List
+                </h5>
+                <div class="row text-center">
+                  {% for patient in patients %}
+                  <div class="col-sm-6">
+                    <h5>{{ patient.pat_name }}</h5>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              
+            </div>
+            {% endif %} {% endcomment %}
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Patient Name</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Age</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if patients %}
+               
+                    {% for patient in patients %}
+
+                    <tr>
+                    <td>{{patient.pat_name }}</td>
+                    <td>{{patient.pat_location}}</td>
+                    <td>{{patient.pat_age}}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+
+            <!-- Other HTML in the template -->
+
+            <!-- Other HTML in the template -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mt-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center" style="color: 504fec">
+              BIOGRAPHY
+            </h5>
+            <p style="color: rgb(44, 71, 88); font-weight: 600">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Blanditiis accusamus laborum reiciendis eos laboriosam corporis
+              vel. Officia impedit eligendi, harum voluptates fuga dignissimos
+              veritatis odio, ex, temporibus doloremque voluptatem at.
+            </p>
+            <h5 class="card-title text-center" style="color: 504fec">
+              contact
+            </h5>
+            <address>
+              <p>Lorem ipsum dolor sit. Golapgonj,Sylhet,Bangladesh</p>
+              <a href="http://">arifad@gmail.com</a>
+              <p>01785051980</p>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a
+    href="/signout"
+    class="btn btn-outline-primary"
+    tabindex="-1"
+    role="button"
+    aria-disabled="true"
+    >Sign Out</a
+  >
+
+  {% else %}
+  <h4>sorry! try agin</h4>
+  {% endif %}
+   
+  {% endblock body %}
+</div>

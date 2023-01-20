@@ -1,0 +1,119 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Frequently Asked Question (FAQ){% endblock title %}
+
+{% block body %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>My FAQ Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- Add your own custom styles here -->
+        <style>
+          /* Add your own custom styles here */
+        </style>
+      </head>
+      
+    <body>
+        <div class="container mt-5">
+            <h1>Frequently Asked Questions (FAQ) </h1>
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Question 1
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    Answer 1
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Question 2
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    Answer 2
+                  </div>
+                </div>
+              </div>
+              <!-- Add more questions and answers here -->
+            </div>
+          </div>
+          
+
+    </body>
+</html>
+
+
+{% for faq in faqs %}
+    <h2>{{ faq.question }}</h2>
+    <p>{{ faq.answer }}</p>
+{% endfor %}
+
+<h2>Submit a new question</h2>
+
+<form method="post" action="{% url 'submit_question' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+<!-- <h1>Admin FAQ</h1> -->
+
+<!-- <table>
+    <tr>
+        <th>Question</th>
+        <th>Answer</th>
+    </tr>
+    {% for faq in faqs %}
+        <tr>
+            <td>{{ faq.question }}</td>
+            <td>
+                {% if faq.answer %}
+                    {{ faq.answer }}
+                {% else %}
+                    <form method="post" action="{% url 'answer_question' faq.id %}">
+                        {% csrf_token %}
+                        {{ answer_form.as_table }}
+                        <input type="submit" value="Submit">
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table> -->
+
+
+
+
+<!-- <table>
+  <tr>
+      <th>Question</th>
+      <th>Answer</th>
+      <th>Action</th>
+  </tr>
+  {% for faq in faqs %}
+      <tr>
+          <td>{{ faq.question }}</td>
+          <td>{{ faq.answer }}</td>
+          <td><a href="{% url 'delete_question' faq.id %}">Delete</a></td>
+      </tr>
+  {% endfor %}
+</table> -->
+
+
+
+{% endblock body %}

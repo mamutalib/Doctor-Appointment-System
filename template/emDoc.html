@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Emergency Doctor{% endblock title %}
+
+{% block body %}
+
+
+
+<div class="container mt-1">
+    <div class="row">
+        {% for emd in em %}
+        {% if emd.working_H == wkh %}
+        <div class="col-sm-3">
+            <div class="card mb-3" style="width: 20rem;">
+                <img src="../static/img/emdoc1.svg" class="card-img-top" alt="Emergency doctor">
+                <div class="card-body">
+                    <h5 class="card-title">Name: {{emd.doctor_name}}</h5>
+                    <h6>Department: {{emd.department}}</h6>
+                    <h6>Location: {{emd.location}}</h6>
+                    <a href="#" class="btn btn-outline-primary">See more</a>
+                </div>
+            </div>
+        </div>
+        
+        {% endif %}
+        
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock body %}
